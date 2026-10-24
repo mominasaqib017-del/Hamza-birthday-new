@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Hamza! 🩵</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;color:#294563;background:linear-gradient(#d9efff,#fff 55%,#eaf6ff)}main{max-width:720px;margin:auto;padding:18px}.card{background:#ffffffed;border:1px solid white;border-radius:24px;padding:22px;margin:15px 0;box-shadow:0 10px 30px #24558b12;text-align:center}h1{font-size:clamp(2.4rem,10vw,4rem);line-height:1.05;color:#24558b;margin:18px 0}h2{color:#24558b}p{line-height:1.6}button{border:0;border-radius:14px;padding:13px 17px;margin:5px;background:#91caff;color:#123e69;font-size:1rem;font-weight:700;box-shadow:0 4px #5a9bd5;cursor:pointer}.secondary{background:#edf7ff;box-shadow:0 4px #c6e3fa}.hidden{display:none}.note{background:#f0f8ff;border-radius:14px;padding:15px;margin:14px 0}.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.photo{border:2px dashed #9fc9ef;background:#f1f8ff;border-radius:15px;padding:10px;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:160px;object-fit:cover;border-radius:10px}.photo input{max-width:100%;font-size:.75rem;margin-top:8px}.letter{text-align:left;white-space:pre-line;background:#f4faff;border-left:4px solid #91caff;padding:16px;border-radius:12px}.footer{text-align:center;color:#6282a2;font-size:.85rem;padding:15px}@keyframes float{50%{transform:translateY(-7px)}}.heart{font-size:2rem;animation:float 2s infinite}
+</style>
+</head>
+<body><main>
+<section class="card"><div>🩵 A LITTLE SURPRISE JUST FOR YOU 🩵</div><div class="heart">✨ 💙 ✨</div><h1>Happy Birthday,<br>Hamza!</h1><p>Someone very special deserves a little extra happiness today.</p><button id="open">Open your surprise ✨</button><div id="intro" class="note hidden">Welcome to your birthday corner! Open your gifts and read your letter. 💙</div></section>
+<section class="card"><h2>🎁 Your little gifts</h2><p>Tap each gift to open it!</p><button data-gift="0">Gift 1 🎁</button><button class="secondary" data-gift="1">Gift 2 🎁</button><button class="secondary" data-gift="2">Gift 3 🎁</button><div id="gift" class="note hidden"></div></section>
+<section class="card"><h2>📸 Our memories</h2><p>Choose photos from your phone for a preview. To show them to Hamza too, upload the photos along with the website files.</p><div class="gallery">
+<label class="photo"><span>📷 Memory 1</span><input type="file" accept="image/*" onchange="photo(this)"></label>
+<label class="photo"><span>📷 Memory 2</span><input type="file" accept="image/*" onchange="photo(this)"></label>
+<label class="photo"><span>📷 Memory 3</span><input type="file" accept="image/*" onchange="photo(this)"></label>
+<label class="photo"><span>📷 Memory 4</span><input type="file" accept="image/*" onchange="photo(this)"></label>
+</div></section>
+<section class="card"><h2>💌 A letter for you</h2><button id="letterBtn">Read your birthday letter</button><div id="letter" class="letter hidden">
+Happy Birthday, Hamza! 🩵
+
+I'm really grateful to have you as my best friend. Thank you for the laughs, the memories, and all the little moments that make our friendship special.
+
+I hope this new year of your life brings you happiness, success, good health, and so many reasons to smile. You deserve the best things life has to offer, and I hope today reminds you how appreciated you are.
+
+Here's to more memories, more laughs, and a friendship that keeps getting better.
+
+Have the best birthday ever! 🎂💙</div></section>
+<section class="card"><h2>One last thing…</h2><p>Ready for your final birthday wish?</p><button id="wishBtn">Yes, show me! 💙</button><div id="final" class="note hidden">May your year be full of good news, big wins, peaceful days, and people who make you feel appreciated. Happy birthday again, Hamza! 🎂✨</div></section>
+<div class="footer">Made with 💙 especially for Hamza</div></main>
+<script>
+document.getElementById('open').onclick=()=>document.getElementById('intro').classList.toggle('hidden');
+const gifts=['🎉 Gift 1: A whole year of happiness, good luck, and amazing memories. You deserve it!','💙 Gift 2: A reminder that you are appreciated more than you probably realise. Keep being you!','😂 Gift 3: You are officially one year more legendary. Age is just a number… but cake is essential!'];
+document.querySelectorAll('[data-gift]').forEach(b=>b.onclick=()=>{let e=document.getElementById('gift');e.textContent=gifts[+b.dataset.gift];e.classList.remove('hidden')});
+document.getElementById('letterBtn').onclick=()=>{let e=document.getElementById('letter');e.classList.toggle('hidden');document.getElementById('letterBtn').textContent=e.classList.contains('hidden')?'Read your birthday letter':'Hide the letter'};
+document.getElementById('wishBtn').onclick=()=>{document.getElementById('final').classList.remove('hidden');for(let i=0;i<24;i++){let e=document.createElement('span');e.textContent=['💙','✨','🎉','🩵'][Math.floor(Math.random()*4)];e.style.cssText='position:fixed;top:-30px;left:'+Math.random()*100+'vw;font-size:24px;z-index:9;animation:fall 3s linear forwards';document.body.appendChild(e);setTimeout(()=>e.remove(),3100)}};
+const st=document.createElement('style');st.textContent='@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:.2}}';document.head.appendChild(st);
+function photo(input){if(!input.files||!input.files[0])return;let label=input.closest('.photo'),old=label.querySelector('img');if(old)old.remove();let im=document.createElement('img');im.src=URL.createObjectURL(input.files[0]);im.alt='Selected memory';label.insertBefore(im,label.firstChild)}
+</script></body></html>
